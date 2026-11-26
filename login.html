@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>เข้าสู่ระบบ | เที่ยวบ้านเรา</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="login-body">
+
+    <!-- ส่วนหัวเว็บไซต์ -->
+    <header>
+
+        <h2>เที่ยวบ้านเรา</h2>
+
+        <nav>
+
+            <a href="index.html">หน้าแรก</a>
+
+            <a href="places.html">ที่เที่ยว</a>
+
+            <a href="food.html">อาหาร</a>
+
+            <a href="plan.html">วางแผนเที่ยว</a>
+
+            <a href="travel.html">ข้อมูลการเดินทาง</a>
+
+            <a href="login.html">เข้าสู่ระบบ</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- พื้นที่เข้าสู่ระบบ -->
+    <main class="login-page">
+
+        <div class="login-card">
+
+            <!-- ไอคอนผู้ใช้งาน -->
+            <div class="login-icon">
+                👤
+            </div>
+
+            <h1>เข้าสู่ระบบ</h1>
+
+            <p class="login-subtitle">
+                ยินดีต้อนรับสู่เว็บไซต์เที่ยวบ้านเรา
+            </p>
+
+
+            <form id="loginForm">
+
+                <!-- ชื่อผู้ใช้ -->
+                <div class="login-group">
+
+                    <label for="username">
+                        ชื่อผู้ใช้
+                    </label>
+
+                    <input type="text"
+                           id="username"
+                           placeholder="กรอกชื่อผู้ใช้"
+                           autocomplete="username"
+                           required>
+
+                </div>
+
+
+                <!-- รหัสผ่าน -->
+                <div class="login-group">
+
+                    <label for="password">
+                        รหัสผ่าน
+                    </label>
+
+                    <div class="password-box">
+
+                        <input type="password"
+                               id="password"
+                               placeholder="กรอกรหัสผ่าน"
+                               autocomplete="current-password"
+                               required>
+
+                        <button type="button"
+                                class="show-password"
+                                id="showPassword"
+                                onclick="togglePassword()">
+
+                            แสดง
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ประเภทผู้ใช้งาน -->
+                <div class="login-group">
+
+                    <label for="role">
+                        ประเภทผู้ใช้งาน
+                    </label>
+
+                    <select id="role" required>
+
+                        <option value="user">
+                            สมาชิก (User)
+                        </option>
+
+                        <option value="admin">
+                            ผู้ดูแลระบบ (Admin)
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ข้อความแจ้งเตือน -->
+                <p id="loginMessage"
+                   class="login-message"
+                   aria-live="polite">
+                </p>
+
+
+                <!-- ปุ่มเข้าสู่ระบบ -->
+                <button type="submit"
+                        class="login-button">
+
+                    เข้าสู่ระบบ
+
+                </button>
+
+            </form>
+
+
+            <!-- บัญชีทดลอง -->
+            <div class="demo-account">
+
+                <h3>บัญชีทดลองสำหรับฝึกปฏิบัติ</h3>
+
+                <p>
+                    <strong>Admin:</strong>
+                    admin / admin123
+                </p>
+
+                <p>
+                    <strong>User:</strong>
+                    user / user123
+                </p>
+
+            </div>
+
+
+            <!-- ปุ่มกลับหน้าแรก -->
+            <div class="login-back">
+
+                <a href="index.html">
+                    ← กลับหน้าแรก
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ส่วนท้ายเว็บไซต์ -->
+  <!-- เชื่อมโยง JavaScript -->
+    <script src="login.js"></script>
+
+
+<footer>
+      <p>นางสาวธมลวรรณ เพิ่มพูน 67219100052 ใบงานฝึกปฏิบัติวิชาการสร้างเว็บไซต์ทางธุรกิจ</p>
+
+</footer>
+</body>
+</html>

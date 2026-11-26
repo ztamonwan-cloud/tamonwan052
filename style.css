@@ -1,0 +1,1646 @@
+* {
+box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-family: system-ui, sans-serif;
+	line-height: 1.65;
+	color: #212121;        /*สีตัวอักษรที่แสดงผลในส่วนของเนื้อหาเว็บ*/
+	background: #DDD3C9;    /*สีพื้นหลังของตัวเว็บ*/
+}
+header, footer {
+	padding: 1rem;
+	color: #000000;   
+	background: #B97078;   /*สีพื้นหลังของส่วนหัวเว็บและท้ายเว็บ*/
+}
+.site-name {
+	margin: 0 0 0.5rem;
+	font-size: 1.25rem;
+	font-weigth: bold;
+}
+nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+nav a {
+	display: block;
+	padding: 0.35rem 0.75rem;
+	color: #ffffff;   /*สีตัวอักษรบนเมนู*/
+	border-radius: 0.35rem;
+}
+nav a:hover, nav a[aria-current="page"] {
+	background: #92BE5E;   /*พื้นหลังของเมนูเมื่อเอาเมาส์ไปวางชี้*/
+	color: #174c3c;
+}
+a:focus-visible {
+	outline: 3px solid #c67400;
+	outline-offset: 3px;
+}
+main {
+	width: min(92%, 56rem);
+	margin: 2rem auto;
+}
+.card {
+	margin: 1rem 0;
+	padding: 1rem;
+	border: 1px solid #d1e2d7;
+	border-radius: 0.75rem;
+	background: #575527;  /*สีพื้นหลังของกรอบcard*/
+}
+img {
+	display: block;
+	max-width: 100%;
+	heigth: auto;
+	border-radius: 0.5rem;
+}
+.button {
+	display: inline-block;
+	padding: 0.6rem 1rem;
+	border-radius: 0.35rem;
+	background: #B97D78;  /*สีของปุ่ม*/
+	color: white;
+	text-decoration: none;
+}
+		
+
+/* กรอบรูปภาพสไลด์ */
+.travel-slider {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+/* จัดเรียงรูปภาพ */
+.travel-slides {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    animation: travelSlide 16s infinite;
+    animation-play-state: paused;
+}
+
+/* ขนาดรูปภาพ */
+.travel-slides img {
+    width: 25%;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+/* เริ่มเลื่อนเมื่อเมาส์ชี้ */
+.travel-slider:hover .travel-slides {
+    animation-play-state: running;
+}
+
+/* กำหนดการเคลื่อนไหว */
+@keyframes travelSlide {
+    0%, 20% {
+        transform: translateX(0);
+    }
+
+    25%, 45% {
+        transform: translateX(-25%);
+    }
+
+    50%, 70% {
+        transform: translateX(-50%);
+    }
+
+    75%, 95% {
+        transform: translateX(-75%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* รองรับหน้าจอโทรศัพท์ */
+@media (max-width: 600px) {
+    .travel-slider {
+        height: 220px;
+    }
+}
+/* พื้นที่แสดงสถานที่ท่องเที่ยว */
+.places-section {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* หัวข้อหลัก */
+.places-title {
+    text-align: center;
+    font-size: 32px;
+    color: #49492d;
+    margin-bottom: 10px;
+}
+
+/* ข้อความใต้หัวข้อ */
+.places-subtitle {
+    text-align: center;
+    color: #666666;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+/* จัดรูปภาพแถวละ 3 กรอบ */
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* กรอบสถานที่ท่องเที่ยว */
+.place-card {
+    background-color: #ffffff;
+    border: 5px solid #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s, box-shadow 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+/* กรอบลอยขึ้นเมื่อเมาส์ชี้ */
+.place-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* พื้นที่สำหรับรูปภาพ */
+.place-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* กำหนดขนาดรูปภาพ */
+.place-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+/* รูปภาพขยายเมื่อเมาส์ชี้ */
+.place-card:hover .place-image img {
+    transform: scale(1.12);
+}
+
+/* พื้นที่ข้อความ */
+.place-content {
+    padding: 18px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ชื่อสถานที่ */
+.place-content h2 {
+    font-size: 22px;
+    color: #55552c;
+    margin: 0 0 10px;
+}
+
+/* คำอธิบายสถานที่ */
+.place-content p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* ปุ่มดูสถานที่ */
+.place-btn {
+    display: block;
+    background-color: #55552c;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: auto;
+    transition: background-color 0.3s;
+}
+
+/* เปลี่ยนสีปุ่มเมื่อเมาส์ชี้ */
+.place-btn:hover {
+    background-color: #b87e7e;
+    color: #ffffff;
+}
+
+/* รองรับหน้าจอแท็บเล็ต */
+@media (max-width: 900px) {
+    .places-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* รองรับหน้าจอโทรศัพท์ */
+@media (max-width: 600px) {
+    .places-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .place-image {
+        height: 230px;
+    }
+
+    .places-title {
+        font-size: 26px;
+    }
+}
+/* =========================
+   หน้าอาหารและของฝาก
+========================= */
+.food-page {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px 0;
+}
+
+.food-title {
+    text-align: center;
+    font-size: 56px;
+    color: #18352c;
+    margin-bottom: 10px;
+}
+
+.food-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #4d5c56;
+    margin-bottom: 35px;
+}
+
+/* การ์ดอาหาร */
+.food-card {
+    background-color: #ffffff;
+    border: 1px solid #cfd8d2;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* รูปภาพ */
+.food-image {
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+}
+
+.food-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* เนื้อหา */
+.food-content {
+    padding: 28px;
+}
+
+.food-content h2 {
+    font-size: 28px;
+    color: #18352c;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.food-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #2f3f39;
+    margin: 0;
+}
+
+/* ปุ่มกลับ */
+.back-btn {
+    display: inline-block;
+    background-color: #214d3c;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #18352c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .food-page {
+        width: 94%;
+    }
+
+    .food-title {
+        font-size: 36px;
+    }
+
+    .food-subtitle {
+        font-size: 16px;
+    }
+
+    .food-image {
+        height: 250px;
+    }
+
+    .food-content {
+        padding: 18px;
+    }
+
+    .food-content h2 {
+        font-size: 24px;
+    }
+
+    .food-content p {
+        font-size: 16px;
+    }
+
+    .back-btn {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+/* ==========================
+   หน้าวางแผนเที่ยว
+========================== */
+
+.trip-page {
+    width: 95%;
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+/* แบนเนอร์ด้านบน */
+.trip-banner {
+    background-color: #27473a;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.trip-banner h1 {
+    font-size: 40px;
+    color: white;
+    margin: 15px 0;
+}
+
+.trip-banner p {
+    font-size: 18px;
+    color: #e6eee8;
+    margin-bottom: 20px;
+}
+
+.trip-banner img {
+    display: block;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* หัวข้อลำดับการเที่ยว */
+.trip-title {
+    font-size: 32px;
+    text-align: center;
+    color: #27473a;
+    margin-bottom: 40px;
+}
+
+/* เส้น Timeline */
+.trip-timeline {
+    position: relative;
+    border-left: 4px solid #719980;
+    margin-left: 25px;
+    padding-left: 35px;
+}
+
+/* รายการสถานที่ */
+.trip-item {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+/* วงกลมตัวเลข */
+.trip-number {
+    position: absolute;
+    left: -59px;
+    top: 25px;
+    width: 44px;
+    height: 44px;
+    background-color: #27473a;
+    color: white;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    box-sizing: border-box;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* กรอบสถานที่ท่องเที่ยว */
+.trip-card {
+    background-color: #ffffff;
+    border: 1px solid #d7e2d9;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* กรอบลอยเมื่อเมาส์ชี้ */
+.trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* รูปภาพสถานที่ */
+.trip-card img {
+    display: block;
+    width: 40%;
+    min-height: 260px;
+    object-fit: cover;
+}
+
+/* พื้นที่ข้อความ */
+.trip-content {
+    flex: 1;
+    min-width: 0;
+    padding: 25px;
+}
+
+/* แถบแสดงเวลา */
+.trip-time {
+    display: inline-block;
+    background-color: #e4efe5;
+    color: #27473a;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    margin-bottom: 12px;
+}
+
+/* ชื่อสถานที่ */
+.trip-content h2 {
+    font-size: 25px;
+    color: #27473a;
+    margin: 5px 0 15px;
+}
+
+/* รายละเอียดกิจกรรม */
+.trip-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555555;
+}
+
+/* ปุ่มดูรายละเอียด */
+.trip-link {
+    display: inline-block;
+    background-color: #27473a;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+/* เปลี่ยนสีเมื่อชี้ปุ่ม */
+.trip-link:hover {
+    background-color: #527963;
+    color: white;
+}
+
+/* กล่องสิ่งที่ควรเตรียม */
+.trip-tips {
+    background-color: #e4efe5;
+    border-left: 6px solid #27473a;
+    padding: 25px;
+    border-radius: 15px;
+    margin: 35px 0;
+}
+
+.trip-tips h2 {
+    color: #27473a;
+    margin-top: 0;
+}
+
+.trip-tips li {
+    font-size: 16px;
+    line-height: 2;
+    color: #333333;
+}
+
+/* ปุ่มหน้าถัดไป */
+.trip-next {
+    display: block;
+    text-align: center;
+    background-color: #27473a;
+    color: #ffffff;
+    padding: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.trip-next:hover {
+    background-color: #527963;
+    color: white;
+}
+
+/* ==========================
+   รองรับโทรศัพท์มือถือ
+========================== */
+
+@media (max-width: 768px) {
+
+    .trip-page {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .trip-banner {
+        padding: 15px;
+    }
+
+    .trip-banner h1 {
+        font-size: 28px;
+    }
+
+    .trip-banner img {
+        height: 230px;
+    }
+
+    .trip-title {
+        font-size: 25px;
+    }
+
+    .trip-card {
+        flex-direction: column;
+    }
+
+    .trip-card img {
+        width: 100%;
+        height: 220px;
+        min-height: 0;
+    }
+
+    .trip-content {
+        padding: 18px;
+    }
+
+    .trip-content h2 {
+        font-size: 22px;
+    }
+
+    .trip-timeline {
+        margin-left: 15px;
+        padding-left: 22px;
+    }
+
+    .trip-number {
+        width: 34px;
+        height: 34px;
+        left: -41px;
+        font-size: 16px;
+    }
+
+}
+
+/* ==========================
+   หน้าวางแผนเที่ยว
+========================== */
+
+.trip-page {
+    width: 95%;
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+/* แบนเนอร์ด้านบน */
+.trip-banner {
+    background-color: #27473a;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.trip-banner h1 {
+    font-size: 40px;
+    color: white;
+    margin: 15px 0;
+}
+
+.trip-banner p {
+    font-size: 18px;
+    color: #e6eee8;
+    margin-bottom: 20px;
+}
+
+.trip-banner img {
+    display: block;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* หัวข้อลำดับการเที่ยว */
+.trip-title {
+    font-size: 32px;
+    text-align: center;
+    color: #27473a;
+    margin-bottom: 40px;
+}
+
+/* เส้น Timeline */
+.trip-timeline {
+    position: relative;
+    border-left: 4px solid #719980;
+    margin-left: 25px;
+    padding-left: 35px;
+}
+
+/* รายการสถานที่ */
+.trip-item {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+/* วงกลมตัวเลข */
+.trip-number {
+    position: absolute;
+    left: -59px;
+    top: 25px;
+    width: 44px;
+    height: 44px;
+    background-color: #27473a;
+    color: white;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    box-sizing: border-box;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* กรอบสถานที่ท่องเที่ยว */
+.trip-card {
+    background-color: #ffffff;
+    border: 1px solid #d7e2d9;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* กรอบลอยเมื่อเมาส์ชี้ */
+.trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* รูปภาพสถานที่ */
+.trip-card img {
+    display: block;
+    width: 40%;
+    min-height: 260px;
+    object-fit: cover;
+}
+
+/* พื้นที่ข้อความ */
+.trip-content {
+    flex: 1;
+    min-width: 0;
+    padding: 25px;
+}
+
+/* แถบแสดงเวลา */
+.trip-time {
+    display: inline-block;
+    background-color: #e4efe5;
+    color: #27473a;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    margin-bottom: 12px;
+}
+
+/* ชื่อสถานที่ */
+.trip-content h2 {
+    font-size: 25px;
+    color: #27473a;
+    margin: 5px 0 15px;
+}
+
+/* รายละเอียดกิจกรรม */
+.trip-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555555;
+}
+
+/* ปุ่มดูรายละเอียด */
+.trip-link {
+    display: inline-block;
+    background-color: #27473a;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+/* เปลี่ยนสีเมื่อชี้ปุ่ม */
+.trip-link:hover {
+    background-color: #527963;
+    color: white;
+}
+
+/* กล่องสิ่งที่ควรเตรียม */
+.trip-tips {
+    background-color: #e4efe5;
+    border-left: 6px solid #27473a;
+    padding: 25px;
+    border-radius: 15px;
+    margin: 35px 0;
+}
+
+.trip-tips h2 {
+    color: #27473a;
+    margin-top: 0;
+}
+
+.trip-tips li {
+    font-size: 16px;
+    line-height: 2;
+    color: #333333;
+}
+
+/* ปุ่มหน้าถัดไป */
+.trip-next {
+    display: block;
+    text-align: center;
+    background-color: #27473a;
+    color: #ffffff;
+    padding: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.trip-next:hover {
+    background-color: #527963;
+    color: white;
+}
+
+/* ==========================
+   รองรับโทรศัพท์มือถือ
+========================== */
+
+@media (max-width: 768px) {
+
+    .trip-page {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .trip-banner {
+        padding: 15px;
+    }
+
+    .trip-banner h1 {
+        font-size: 28px;
+    }
+
+    .trip-banner img {
+        height: 230px;
+    }
+
+    .trip-title {
+        font-size: 25px;
+    }
+
+    .trip-card {
+        flex-direction: column;
+    }
+
+    .trip-card img {
+        width: 100%;
+        height: 220px;
+        min-height: 0;
+    }
+
+    .trip-content {
+        padding: 18px;
+    }
+
+    .trip-content h2 {
+        font-size: 22px;
+    }
+
+    .trip-timeline {
+        margin-left: 15px;
+        padding-left: 22px;
+    }
+
+    .trip-number {
+        width: 34px;
+        height: 34px;
+        left: -41px;
+        font-size: 16px;
+    }
+
+}
+
+/* ===========================
+   หน้าข้อมูลการเดินทาง
+=========================== */
+
+.travel-info-page {
+    width: 95%;
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+/* แบนเนอร์หัวข้อ */
+.info-banner {
+    background: linear-gradient(135deg, #27473a, #527963);
+    color: white;
+    padding: 45px 25px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 35px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.info-banner h1 {
+    font-size: 42px;
+    color: white;
+    margin: 15px 0;
+}
+
+.info-banner p {
+    color: #e5eee8;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* หัวข้อหลัก */
+.info-title {
+    color: #27473a;
+    font-size: 30px;
+    text-align: center;
+    margin: 35px 0 25px;
+}
+
+/* จัดกล่องวิธีเดินทาง */
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+/* กรอบวิธีเดินทาง */
+.transport-card {
+    background-color: white;
+    border: 1px solid #d3dfd5;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* กรอบลอยเมื่อเมาส์ชี้ */
+.transport-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* ไอคอน */
+.transport-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+/* ชื่อวิธีเดินทาง */
+.transport-card h3 {
+    font-size: 23px;
+    color: #27473a;
+}
+
+/* รายละเอียด */
+.transport-card p {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.8;
+}
+
+/* กรอบข้อมูลขนาดใหญ่ */
+.info-card {
+    background-color: #ffffff;
+    border: 1px solid #d3dfd5;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.info-card h2 {
+    font-size: 28px;
+    color: #27473a;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.info-card p {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.8;
+}
+
+/* แผนที่ Google Maps */
+.travel-map {
+    display: block;
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+/* รายชื่อสถานที่ */
+.location-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.location-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background-color: #edf3ee;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+.location-item h3 {
+    font-size: 18px;
+    color: #27473a;
+    margin: 0;
+}
+
+/* ปุ่มทั่วไป */
+.info-btn {
+    display: inline-block;
+    background-color: #27473a;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+/* เปลี่ยนสีปุ่ม */
+.info-btn:hover {
+    background-color: #527963;
+    color: white;
+}
+
+/* กล่องเช็กลิสต์ */
+.travel-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* รายการเช็กลิสต์ */
+.travel-checklist label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background-color: #f3f7f3;
+    border-radius: 10px;
+    color: #333333;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* ช่องติ๊กถูก */
+.travel-checklist input {
+    width: 20px;
+    height: 20px;
+    accent-color: #27473a;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* เปลี่ยนสีเมื่อติ๊กถูก */
+.travel-checklist label:has(input:checked) {
+    background-color: #dcebdd;
+    color: #27473a;
+    text-decoration: line-through;
+}
+
+/* กล่องเบอร์โทรฉุกเฉิน */
+.emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.emergency-card {
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #d3dfd5;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.emergency-card:hover {
+    transform: translateY(-5px);
+}
+
+.emergency-card h3 {
+    color: #27473a;
+    font-size: 20px;
+}
+
+.emergency-card a {
+    color: #b33c3c;
+    font-size: 38px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* แหล่งข้อมูล */
+.source-item {
+    background-color: #f3f7f3;
+    border-left: 5px solid #527963;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.source-item h3 {
+    color: #27473a;
+    margin-top: 0;
+}
+
+.source-item a {
+    color: #27473a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.source-item a:hover {
+    text-decoration: underline;
+}
+
+/* ปุ่มด้านล่าง */
+.info-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+/* ===========================
+   รองรับโทรศัพท์มือถือ
+=========================== */
+
+@media (max-width: 768px) {
+
+    .travel-info-page {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .info-banner {
+        padding: 25px 15px;
+    }
+
+    .info-banner h1 {
+        font-size: 30px;
+    }
+
+    .info-title {
+        font-size: 25px;
+    }
+
+    .transport-grid,
+    .emergency-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        padding: 18px;
+    }
+
+    .travel-map {
+        height: 300px;
+    }
+
+    .location-item {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .info-navigation {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+/* ===================================
+   เปลี่ยนสีเฉพาะหน้าข้อมูลการเดินทาง
+=================================== */
+
+/* สีพื้นหลังเว็บไซต์ */
+.info-body {
+    background-color: #DDD3C9;
+    color: #333333;
+}
+
+/* สีส่วนหัวเว็บไซต์ */
+.info-body header {
+    background-color: #B97078;
+    color: #24181A;
+}
+
+/* สีชื่อเว็บไซต์ */
+.info-body header h1,
+.info-body header h2 {
+    color: #24181A;
+}
+
+/* สีแถบเมนู */
+.info-body nav {
+    background-color: #B97078;
+}
+
+/* สีตัวอักษรเมนู */
+.info-body nav a {
+    color: #24181A;
+}
+
+/* เมนูเมื่อเอาเมาส์ไปชี้ */
+.info-body nav a:hover {
+    background-color: #575527;
+    color: #FFFFFF;
+}
+
+/* สีแบนเนอร์ข้อมูลการเดินทาง */
+.info-body .info-banner {
+    background: #575527;
+    color: #FFFFFF;
+}
+
+/* สีข้อความบนแบนเนอร์ */
+.info-body .info-banner h1,
+.info-body .info-banner p {
+    color: #FFFFFF;
+}
+
+/* สีหัวข้อหลัก */
+.info-body .info-title {
+    color: #575527;
+}
+
+/* สีพื้นหลังของกรอบ Card */
+.info-body .transport-card,
+.info-body .info-card,
+.info-body .emergency-card {
+    background-color: #575527;
+    border-color: #575527;
+    color: #FFFFFF;
+}
+
+/* สีตัวอักษรภายในกรอบ Card */
+.info-body .transport-card h3,
+.info-body .transport-card p,
+.info-body .info-card h2,
+.info-body .info-card p,
+.info-body .emergency-card h3 {
+    color: #FFFFFF;
+}
+
+/* สีไอคอน */
+.info-body .transport-icon {
+    color: #DDD3C9;
+}
+
+/* สีพื้นหลังรายการสถานที่ */
+.info-body .location-item {
+    background-color: #DDD3C9;
+}
+
+/* สีชื่อสถานที่ */
+.info-body .location-item h3 {
+    color: #575527;
+}
+
+/* สีพื้นหลังเช็กลิสต์ */
+.info-body .travel-checklist label {
+    background-color: #DDD3C9;
+    color: #575527;
+    border: 1px solid transparent;
+}
+
+/* สีช่องติ๊กถูก */
+.info-body .travel-checklist input {
+    accent-color: #575527;
+}
+
+/* สีหลังจากติ๊กถูก */
+.info-body .travel-checklist label:has(input:checked) {
+    background-color: #B97078;
+    color: #24181A;
+    text-decoration: line-through;
+}
+
+/* สีเบอร์โทรศัพท์ฉุกเฉิน */
+.info-body .emergency-card a {
+    color: #FFFFFF;
+}
+
+/* สีพื้นหลังกล่องแหล่งข้อมูล */
+.info-body .source-item {
+    background-color: #DDD3C9;
+    border-left: 5px solid #B97078;
+}
+
+/* สีข้อความแหล่งข้อมูล */
+.info-body .source-item h3,
+.info-body .source-item p,
+.info-body .source-item a {
+    color: #575527;
+}
+
+/* สีปุ่มกด */
+.info-body .info-btn {
+    background-color: #B97078;
+    color: #24181A;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+/* สีปุ่มเมื่อเอาเมาส์ไปชี้ */
+.info-body .info-btn:hover {
+    background-color: #575527;
+    color: #FFFFFF;
+    border-color: #DDD3C9;
+}
+
+/* สีส่วนท้ายเว็บไซต์ */
+.info-body footer {
+    background-color: #575527;
+    color: #FFFFFF;
+}
+
+/* สีตัวอักษรส่วนท้าย */
+.info-body footer p,
+.info-body footer a {
+    color: #FFFFFF;
+}
+
+/* =================================
+   หน้าเข้าสู่ระบบ login.html
+================================= */
+
+/* พื้นหลังหน้าเว็บไซต์ */
+.login-body {
+    background-color: #DDD3C9;
+    color: #333333;
+    margin: 0;
+    font-family: Arial, Tahoma, sans-serif;
+}
+
+/* ส่วนหัวเว็บไซต์ */
+.login-body header {
+    background-color: #B97078;
+    color: #24181A;
+    padding: 20px;
+}
+
+/* ชื่อเว็บไซต์ */
+.login-body header h2 {
+    color: #24181A;
+    margin-top: 0;
+}
+
+/* เมนูด้านบน */
+.login-body nav {
+    background-color: #B97078;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ตัวอักษรเมนู */
+.login-body nav a {
+    color: #24181A;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* เมนูเมื่อเมาส์ชี้ */
+.login-body nav a:hover {
+    background-color: #575527;
+    color: #FFFFFF;
+}
+
+/* พื้นที่หลัก */
+.login-body .login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    min-height: 75vh;
+    padding: 45px 20px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* กรอบเข้าสู่ระบบ */
+.login-body .login-card {
+    background-color: #FFFFFF;
+    border-radius: 22px;
+    width: 100%;
+    max-width: 450px;
+    padding: 35px;
+    box-sizing: border-box;
+    border-top: 8px solid #575527;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* ไอคอนผู้ใช้งาน */
+.login-body .login-icon {
+    width: 85px;
+    height: 85px;
+    background-color: #575527;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    color: #FFFFFF;
+}
+
+/* หัวข้อเข้าสู่ระบบ */
+.login-body .login-card h1 {
+    color: #575527;
+    font-size: 34px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* ข้อความต้อนรับ */
+.login-body .login-subtitle {
+    text-align: center;
+    color: #666666;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+/* กลุ่มช่องกรอกข้อมูล */
+.login-body .login-group {
+    margin-bottom: 22px;
+}
+
+/* ชื่อช่องกรอก */
+.login-body .login-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #575527;
+    margin-bottom: 8px;
+}
+
+/* ช่องกรอกชื่อและรหัสผ่าน */
+.login-body .login-group input,
+.login-body .login-group select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #DDD3C9;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #333333;
+    background-color: #FAF8F6;
+    box-sizing: border-box;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* เมื่อคลิกช่องกรอก */
+.login-body .login-group input:focus,
+.login-body .login-group select:focus {
+    border-color: #B97078;
+    box-shadow: 0 0 0 3px rgba(185,112,120,0.2);
+}
+
+/* จัดช่องรหัสผ่านกับปุ่มแสดง */
+.login-body .password-box {
+    display: flex;
+    gap: 8px;
+}
+
+/* ช่องรหัสผ่าน */
+.login-body .password-box input {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ปุ่มแสดงรหัสผ่าน */
+.login-body .show-password {
+    background-color: #575527;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* ปุ่มแสดงรหัสผ่านเมื่อเมาส์ชี้ */
+.login-body .show-password:hover {
+    background-color: #B97078;
+    color: #24181A;
+}
+
+/* ปุ่มเข้าสู่ระบบ */
+.login-body .login-button {
+    width: 100%;
+    background-color: #B97078;
+    color: #24181A;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* เอฟเฟกต์ปุ่มเข้าสู่ระบบ */
+.login-body .login-button:hover {
+    background-color: #575527;
+    color: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+/* ข้อความแจ้งเตือน */
+.login-body .login-message {
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* กล่องบัญชีทดลอง */
+.login-body .demo-account {
+    background-color: #DDD3C9;
+    border-left: 5px solid #B97078;
+    border-radius: 10px;
+    padding: 18px;
+    margin-top: 25px;
+}
+
+/* หัวข้อบัญชีทดลอง */
+.login-body .demo-account h3 {
+    color: #575527;
+    font-size: 16px;
+    margin-top: 0;
+}
+
+/* รายละเอียดบัญชี */
+.login-body .demo-account p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 5px 0;
+    color: #333333;
+}
+
+/* ปุ่มกลับหน้าแรก */
+.login-body .login-back {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.login-body .login-back a {
+    color: #575527;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-body .login-back a:hover {
+    text-decoration: underline;
+}
+
+/* ส่วนท้ายเว็บไซต์ */
+.login-body footer {
+    background-color: #575527;
+    color: #FFFFFF;
+    padding: 25px;
+    text-align: center;
+}
+
+.login-body footer p {
+    color: #FFFFFF;
+}
+
+/* รองรับโทรศัพท์มือถือ */
+@media (max-width: 600px) {
+
+    .login-body .login-page {
+        padding: 25px 15px;
+    }
+
+    .login-body .login-card {
+        padding: 25px 20px;
+    }
+
+    .login-body .login-card h1 {
+        font-size: 28px;
+    }
+
+    .login-body nav a {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+}
